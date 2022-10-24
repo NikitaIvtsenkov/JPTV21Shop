@@ -11,10 +11,9 @@ package entity;
  */
 public class Info {
     private String price;
-    private String expirationDate;
     private String countProductInShop;
-    private String discount;
-    private String pricewithdiscount;
+    private String fabricator;
+
 
     public Info() {
     }
@@ -27,14 +26,6 @@ public class Info {
         this.price = price;
     }
 
-    public String getExpirationDate() {
-        return expirationDate;
-    }
-
-    public void setExpirationDate(String expirationDate) {
-        this.expirationDate = expirationDate;
-    }
-
     public String getCountProductInShop() {
         return countProductInShop;
     }
@@ -42,21 +33,18 @@ public class Info {
     public void setCountProductInShop(String countProductInShop) {
         this.countProductInShop = countProductInShop;
     }
-    
-    public String getDiscount() {
-        return discount;
+
+    public String getFabricator() {
+        return fabricator;
     }
 
-    public void setDiscount(String discount) {
-        this.discount = discount;
+    public void setFabricator(String fabricator) {
+        this.fabricator = fabricator;
     }
 
     @Override
     public String toString() {
-        return "Info{" + "price=" + price + ", expirationDate=" + expirationDate + ", countProductInShop=" + countProductInShop + ", discount=" + discount + '}';
+        return "Info{" + "price=" + price + ", countProductInShop=" + countProductInShop + ", fabricator=" + fabricator + '}';
     }
-
-    
-
-    
+   
 }

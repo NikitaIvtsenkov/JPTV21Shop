@@ -7,6 +7,9 @@ package shopjptv21;
 
 import entity.Product;
 import entity.Info;
+import entity.Customer;
+import entity.InfoCustomer;
+
 import java.util.Arrays;
 import java.util.Scanner;
 import shopmanagers.ShopManager;
@@ -17,11 +20,12 @@ import shopmanagers.ShopManager;
  */
 public class App {
     private Product[] products;
-    private Product[] productsw;
+    private Customer[] productsCustomer;
     private final ShopManager shopManager;
 
     public App() {
         testAddProduct();
+//        testAddCustomer();
         shopManager = new ShopManager();
     }
     
@@ -31,11 +35,13 @@ public class App {
         do{
             System.out.println("Список задач магазина: ");
             System.out.println("0. Закрыть приложение");
-            System.out.println("1. Добавить товар");
-            System.out.println("2. Добавить работника");
-            System.out.println("3. Список товаров");
-            System.out.println("4. Список работников");
-            System.out.println("5. Редактирование товара");
+            System.out.println("1. Добавить продукт");
+            System.out.println("2. Список продоваемых товаров");
+            System.out.println("3. Добавить покупателя");
+            System.out.println("4. Список зарегестрированных покупателей");
+            System.out.println("5. Покупка покупателем продукта");
+            System.out.println("6. Доход магазина за все время");
+            System.out.println("7. Добавить денег покупателю");
             System.out.print("Выберите номер задачи: ");
             int task = scanner.nextInt();
             scanner.nextLine();
@@ -46,25 +52,27 @@ public class App {
                     System.out.println("Задача 0. Закрыть приложение");
                     break;
                 case 1:
-                    System.out.println("Задача 1. Добавить товар");
+                    System.out.println("Задача 1. Добавить продукт");
                     this.products = Arrays.copyOf(this.products, this.products.length+1);
                     this.products[this.products.length-1] = shopManager.createProduct();
                     break;
                 case 2:
-                    System.out.println("Задача 2. Добавить работника");
-                    this.productsw = Arrays.copyOf(this.productsw, this.productsw.length+1);
-                    this.productsw[this.productsw.length-1] = shopManager.createWorker();
+                    System.out.println("Задача 2. Список товаров");
+                    shopManager.printListProducts(products);
+//                    
                     break;                
                 case 3:
-                    System.out.println("Задача 3. Список товаров");
-                    shopManager.printListProducts(products);
+                    System.out.println("Задача 3. Добавить покупателя");
+                    this.productsCustomer = Arrays.copyOf(this.productsCustomer, this.productsCustomer.length+1);
+                    this.productsCustomer[this.productsCustomer.length-1] = shopManager.createCustomer();
                     break;
                 case 4:
-                    System.out.println("Задача 4. Список работников");
-                    shopManager.printListWorkers(productsw);
+                    System.out.println("Задача 4. Список покупателей");
+                    shopManager.printListCustomers(productsCustomer);
                     break;
                 case 5:
-                    System.out.println("Задача 5. Редактирование товара");
+                    System.out.println("Задача 5. Покупка покупателем продукта");
+//                    System.out.println("Задача 5. Редактирование товара");
 //                    System.out.println("Список товаров: ");
 //                    shopManager.printListProducts(products);
 //                    System.out.print("Выберите номер товара для редактирования: ");
@@ -72,6 +80,18 @@ public class App {
 //                    scanner.nextLine();
 //                    products[numProductForEdit-1] = shopManager.changeProduct(products[numProductForEdit-1]);
                     break;
+                case 6:
+                    System.out.println("Задача 6. Доход магазина за все время");
+                    break;
+                case 7:
+//                    System.out.println("Задача 7. Добавить денег покупателю");
+//                    System.out.println("Список покупателей: ");
+//                    shopManager.printListCustomers(productsCustomer);
+//                    System.out.print("Выберите покупателя для редактирования: ");
+//                    int numCustomerForEdit = scanner.nextInt();
+//                    scanner.nextLine();
+//                    productsCustomer[numCustomerForEdit-1] = shopManager.changeCustomer(customers[numCustomerForEdit-1]);
+                    break;   
                 default:
                     System.out.println("Выберите задачу из списка");
             }
@@ -83,16 +103,26 @@ public class App {
     private void testAddProduct() {
         this.products = new Product[0];
         Product product = new Product();
-        product.setTitle("Product for editing1");
-        Info info = new Info();
-        info.setPrice("3.99");
-        info.setExpirationDate("20.12.2022");
-        info.setCountProductInShop("219");
-        info.setDiscount("30");
-        Info[] productInfos = new Info[1];
-        productInfos[0] = info;
-        product.setInfos(productInfos);
+        product.setTitle("Milk");
+        product.setPrice("0.99");
+        product.setCountProductInShop("2190");
+        product.setFabricator("Tere");
+        
         this.products = Arrays.copyOf(this.products, this.products.length+1);
         this.products[this.products.length-1] = product;
     }
+    
+//    private void testAddCustomer() {
+//        this.productsCustomer = new Customer[0];
+//        Customer customer = new Customer();
+//        customer.setName("Nikita Ivtsenkov");
+//        InfoCustomer infocustomer = new InfoCustomer();
+//        infocustomer.setCash("200");
+//        infocustomer.setTelephone("+56884831");
+//        InfoCustomer[] customerInfos = new InfoCustomer[1];
+//        customerInfos[0] = infocustomer;
+//        customer.setInfoscustomers(customerInfos);
+//        this.productsCustomer = Arrays.copyOf(this.productsCustomer, this.productsCustomer.length+1);
+//        this.productsCustomer[this.productsCustomer.length-1] = customer;
+//    }
 }

@@ -4,15 +4,15 @@
  * and open the template in the editor.
  */
 package entity;
-
-import java.util.Arrays;
 /**
  *
  * @author Nikita
  */
 public class Product {
     private String title;
-    private Info[] infos;
+    private String price;
+    private String countProductInShop;
+    private String fabricator;
 
     public Product() {
     }
@@ -25,27 +25,36 @@ public class Product {
         this.title = title;
     }
 
-    public Info[] getInfos() {
-        return infos;
+    public String getPrice() {
+        return price;
     }
 
-    public void setInfos(Info[] infos) {
-        this.infos = infos;
+    public void setPrice(String price) {
+        this.price = price;
     }
-    
-    public void addInfo(Info info){
-        Info[] newInfos = Arrays.copyOf(infos, infos.length+1);
-        newInfos[newInfos.length-1]=info;
-        this.infos = newInfos;
+
+    public String getCountProductInShop() {
+        return countProductInShop;
+    }
+
+    public void setCountProductInShop(String countProductInShop) {
+        this.countProductInShop = countProductInShop;
+    }
+
+    public String getFabricator() {
+        return fabricator;
+    }
+
+    public void setFabricator(String fabricator) {
+        this.fabricator = fabricator;
     }
 
     @Override
     public String toString() {
-        return "Product{" 
-                + "title=" + title 
-                + ", infos=" + infos 
-                + '}';
+        return "Product{" + "title=" + title + ", price=" + price + ", countProductInShop=" + countProductInShop + ", fabricator=" + fabricator + '}';
     }
+    
+    
     
     
 }
