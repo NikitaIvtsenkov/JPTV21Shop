@@ -5,8 +5,6 @@
  */
 package shopmanagers;
 
-import entity.Info;
-import entity.InfoCustomer;
 import entity.Product;
 import java.util.Scanner;
 import entity.Customer;
@@ -15,20 +13,12 @@ import entity.Customer;
  * @author Nikita
  */
 public class ShopManager {
-    private Scanner scanner;
+    private final Scanner scanner;
     
     public ShopManager() {
         this.scanner = new Scanner(System.in);
     }
-    
-//    public Customer createCustomer(){
-//        Customer customer = new Customer();
-//        System.out.print("Введите имя и фамилию покупателя: ");
-//        customer.setName(scanner.nextLine());
-//        customer.setInfoscustomers(createInfoCustomers());
-//        return customer;
-//    }
-    
+        
     public Product createProduct(){
         Product product = new Product();
         System.out.print("Введите название продукта: ");
@@ -52,31 +42,40 @@ public class ShopManager {
     }
     
     public void printListProducts(Product[] products){
-        
         for (int i = 0; i < products.length; i++) {
-            System.out.printf("\t\tPrice: %s$ \n\t\tProduct count: %s t.k \n\t\tFabricator: %s.inc"
-                ,products[i].getPrice(),products[i].getCountProductInShop(),products[i].getFabricator());
+            System.out.printf(i+1+". Product{title = %s%n",products[i].getTitle());
+            System.out.print("\tInfos = [\n");
+            System.out.printf("\t\tPrice: %s$ \n\t\tProduct count: %s t.k \n\t\tFabricator: %s%n"
+                    ,products[i].getPrice(),products[i].getCountProductInShop(),products[i].getFabricator());
         }               
     }
     
     public void printListCustomers(Customer[] customers){
         for (int i = 0; i < customers.length; i++) {
-            System.out.printf("\t\tName: %s$ \n\t\tCash: %s t.k \n\t\tTelephone: %s\n"
-                ,customers[i].getName(),customers[i].getCash(),customers[i].getTelephone());
+            System.out.printf(i+1+". Customer{name = %s%n",customers[i].getName());
+            System.out.print("\tInfos = [\n");
+            System.out.printf("\t\tCash: %s$ \n\t\tTelephone: %s\n"
+                    ,customers[i].getCash(), customers[i].getTelephone());
         }   
     }  
     
-//    private Customer changeCustomerCash(Customer customer) {
+    private Customer changeCustomerCash(Customer customer) {
 //        System.out.print("Количество денег у покупателя: ");
-//        System.out.println(customer.getInfoscustomers().getCash());
-//        System.out.print("Изменить название книги? (y/n)");
+//        System.out.println(customer.getCash());
+//        System.out.print("Сколько денег добавить покупателю?: ");
 //        String edit = scanner.nextLine();
 //        System.out.println();
 //        if(edit.equals("y")){
 //            System.out.print("Введите новое название книги: ");
 //            book.setTitle(scanner.nextLine());
 //        }
-//        return book;
-//    }
+        System.out.println("Список покупателей: ");
+        ShopManager.printListCustomers(productsCustomer);
+        System.out.print("Выберите покупателя для редактирования: ");
+        int numCustomerForEdit = scanner.nextInt();
+        scanner.nextLine();
+        productsCustomer[numCustomerForEdit-1] = shopManager.changeCustomer(ustomer[numCustomerForEdit-1]);
+        return customer;
+    }
 
 }

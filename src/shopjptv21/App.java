@@ -5,10 +5,9 @@
  */
 package shopjptv21;
 
+
 import entity.Product;
-import entity.Info;
 import entity.Customer;
-import entity.InfoCustomer;
 
 import java.util.Arrays;
 import java.util.Scanner;
@@ -25,7 +24,7 @@ public class App {
 
     public App() {
         testAddProduct();
-//        testAddCustomer();
+        testAddCustomer();
         shopManager = new ShopManager();
     }
     
@@ -58,8 +57,7 @@ public class App {
                     break;
                 case 2:
                     System.out.println("Задача 2. Список товаров");
-                    shopManager.printListProducts(products);
-//                    
+                    shopManager.printListProducts(products);              
                     break;                
                 case 3:
                     System.out.println("Задача 3. Добавить покупателя");
@@ -71,7 +69,7 @@ public class App {
                     shopManager.printListCustomers(productsCustomer);
                     break;
                 case 5:
-                    System.out.println("Задача 5. Покупка покупателем продукта");
+//                    System.out.println("Задача 5. Покупка покупателем продукта");
 //                    System.out.println("Задача 5. Редактирование товара");
 //                    System.out.println("Список товаров: ");
 //                    shopManager.printListProducts(products);
@@ -79,7 +77,7 @@ public class App {
 //                    int numProductForEdit = scanner.nextInt();
 //                    scanner.nextLine();
 //                    products[numProductForEdit-1] = shopManager.changeProduct(products[numProductForEdit-1]);
-                    break;
+//                    break;
                 case 6:
                     System.out.println("Задача 6. Доход магазина за все время");
                     break;
@@ -90,7 +88,7 @@ public class App {
 //                    System.out.print("Выберите покупателя для редактирования: ");
 //                    int numCustomerForEdit = scanner.nextInt();
 //                    scanner.nextLine();
-//                    productsCustomer[numCustomerForEdit-1] = shopManager.changeCustomer(customers[numCustomerForEdit-1]);
+//                    productsCustomer[numCustomerForEdit-1] = shopManager.changeCustomer(customer[numCustomerForEdit-1]);
                     break;   
                 default:
                     System.out.println("Выберите задачу из списка");
@@ -112,17 +110,14 @@ public class App {
         this.products[this.products.length-1] = product;
     }
     
-//    private void testAddCustomer() {
-//        this.productsCustomer = new Customer[0];
-//        Customer customer = new Customer();
-//        customer.setName("Nikita Ivtsenkov");
-//        InfoCustomer infocustomer = new InfoCustomer();
-//        infocustomer.setCash("200");
-//        infocustomer.setTelephone("+56884831");
-//        InfoCustomer[] customerInfos = new InfoCustomer[1];
-//        customerInfos[0] = infocustomer;
-//        customer.setInfoscustomers(customerInfos);
-//        this.productsCustomer = Arrays.copyOf(this.productsCustomer, this.productsCustomer.length+1);
-//        this.productsCustomer[this.productsCustomer.length-1] = customer;
-//    }
+    private void testAddCustomer() {
+        this.productsCustomer = new Customer[0];
+        Customer customer = new Customer();
+        customer.setName("Nikita Ivtsenkov");
+        customer.setCash("200");
+        customer.setTelephone("+56884831");
+
+        this.productsCustomer = Arrays.copyOf(this.productsCustomer, this.productsCustomer.length+1);
+        this.productsCustomer[this.productsCustomer.length-1] = customer;
+    }
 }
