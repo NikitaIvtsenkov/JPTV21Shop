@@ -10,8 +10,8 @@ package entity;
  */
 public class Product {
     private String title;
-    private String price;
-    private String countProductInShop;
+    private int price;
+    private int countProductInShop;
     private String fabricator;
 
     public Product() {
@@ -25,19 +25,19 @@ public class Product {
         this.title = title;
     }
 
-    public String getPrice() {
+    public int getPrice() {
         return price;
     }
 
-    public void setPrice(String price) {
+    public void setPrice(int price) {
         this.price = price;
     }
 
-    public String getCountProductInShop() {
+    public int getCountProductInShop() {
         return countProductInShop;
     }
 
-    public void setCountProductInShop(String countProductInShop) {
+    public void setCountProductInShop(int countProductInShop) {
         this.countProductInShop = countProductInShop;
     }
 

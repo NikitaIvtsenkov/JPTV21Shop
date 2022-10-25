@@ -14,7 +14,7 @@ import java.util.Arrays;
 public class Customer {
     
     private String name;
-    private String cash;
+    private int cash;
     private String telephone;
 
     public String getName() {
@@ -25,11 +25,11 @@ public class Customer {
         this.name = name;
     }
 
-    public String getCash() {
+    public int getCash() {
         return cash;
     }
 
-    public void setCash(String cash) {
+    public void setCash(int cash) {
         this.cash = cash;
     }
 
@@ -45,7 +45,5 @@ public class Customer {
     public String toString() {
         return "Customer{" + "name=" + name + ", cash=" + cash + ", telephone=" + telephone + '}';
     }
-
-    
     
 }

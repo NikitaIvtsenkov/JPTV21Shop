@@ -24,7 +24,7 @@ public class ShopManager {
         System.out.print("Введите название продукта: ");
         product.setTitle(scanner.nextLine());
         System.out.print("Введите количество товара: ");
-        product.setCountProductInShop(scanner.nextLine());
+        product.setCountProductInShop(scanner.nextInt());
         System.out.print("Введите произвотителя товара: ");
         product.setFabricator(scanner.nextLine());
         return product;
@@ -35,7 +35,7 @@ public class ShopManager {
         System.out.print("Введите имя и фамилию покупателя: ");
         customer.setName(scanner.nextLine());
         System.out.print("Введте количество денег у покупателя: ");
-        customer.setCash(scanner.nextLine());
+        customer.setCash(scanner.nextInt());
         System.out.print("Введите телефон покупателя: ");
         customer.setTelephone(scanner.nextLine());
         return customer;
@@ -58,24 +58,5 @@ public class ShopManager {
                     ,customers[i].getCash(), customers[i].getTelephone());
         }   
     }  
-    
-    private Customer changeCustomerCash(Customer customer) {
-//        System.out.print("Количество денег у покупателя: ");
-//        System.out.println(customer.getCash());
-//        System.out.print("Сколько денег добавить покупателю?: ");
-//        String edit = scanner.nextLine();
-//        System.out.println();
-//        if(edit.equals("y")){
-//            System.out.print("Введите новое название книги: ");
-//            book.setTitle(scanner.nextLine());
-//        }
-        System.out.println("Список покупателей: ");
-        ShopManager.printListCustomers(productsCustomer);
-        System.out.print("Выберите покупателя для редактирования: ");
-        int numCustomerForEdit = scanner.nextInt();
-        scanner.nextLine();
-        productsCustomer[numCustomerForEdit-1] = shopManager.changeCustomer(ustomer[numCustomerForEdit-1]);
-        return customer;
-    }
 
 }

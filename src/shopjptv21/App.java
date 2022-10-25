@@ -18,14 +18,19 @@ import shopmanagers.ShopManager;
  * @author Nikita
  */
 public class App {
+    private Customer[] customers;
     private Product[] products;
+    int history[];
     private Customer[] productsCustomer;
     private final ShopManager shopManager;
 
     public App() {
+        this.customers = new Customer[0];
+        this.products = new Product[0];
+        this.history = new int[0];
+        shopManager = new ShopManager();
         testAddProduct();
         testAddCustomer();
-        shopManager = new ShopManager();
     }
     
     public void run(){
@@ -66,30 +71,50 @@ public class App {
                     break;
                 case 4:
                     System.out.println("Задача 4. Список покупателей");
-                    shopManager.printListCustomers(productsCustomer);
+                    shopManager.printListCustomers(customers);
                     break;
                 case 5:
-//                    System.out.println("Задача 5. Покупка покупателем продукта");
-//                    System.out.println("Задача 5. Редактирование товара");
-//                    System.out.println("Список товаров: ");
-//                    shopManager.printListProducts(products);
-//                    System.out.print("Выберите номер товара для редактирования: ");
-//                    int numProductForEdit = scanner.nextInt();
-//                    scanner.nextLine();
-//                    products[numProductForEdit-1] = shopManager.changeProduct(products[numProductForEdit-1]);
-//                    break;
+                    System.out.println("Задача 5. Покупка покупателем продукта");
+                    System.out.println("Список покупателей");
+                    shopManager.printListCustomers(customers);
+                    System.out.println("Список товаров");
+                    shopManager.printListProducts(products);
+                    System.out.print("Выберите покупателя для редактирования: ");
+                    int numCustomerForEdit = scanner.nextInt();
+                    System.out.print("Выберите товар для редактирования: ");
+                    int numProductForEdit = scanner.nextInt();
+                    System.out.print("Какое количество товара вы хотите приобрести: ");
+                    int countProductForBuy = scanner.nextInt();
+
+                    if(customers[numCustomerForEdit-1].getCash() > products[numProductForEdit-1].getPrice() && products[numProductForEdit-1].getCountProductInShop() > 0){    
+                        int newpur = customers[numCustomerForEdit-1].getCash() - (products[numProductForEdit-1].getPrice() * countProductForBuy);  
+                        int newpur2 = products[numProductForEdit-1].getCountProductInShop() - countProductForBuy;
+                        customers[numCustomerForEdit-1].setCash(newpur); 
+                        products[numProductForEdit-1].setCountProductInShop(newpur2);
+                        this.history = Arrays.copyOf(this.history, this.history.length+1);
+                        this.history[this.history.length-1] = products[numProductForEdit-1].getPrice();
+                        System.out.println("\n!!! Спасибо за покупку !!!");
+                        System.out.printf("Цена покупки состовляет: %s%n",products[numProductForEdit-1].getPrice() * countProductForBuy);
+                    }else if(customers[numCustomerForEdit-1].getCash() < products[numProductForEdit-1].getPrice()){
+                        System.out.println("У вас нет денег");             
+                    }else{
+                        System.out.println("У нас закончился этот товар");
+                    }
+                    break;
                 case 6:
                     System.out.println("Задача 6. Доход магазина за все время");
+                    
                     break;
                 case 7:
-//                    System.out.println("Задача 7. Добавить денег покупателю");
-//                    System.out.println("Список покупателей: ");
-//                    shopManager.printListCustomers(productsCustomer);
-//                    System.out.print("Выберите покупателя для редактирования: ");
-//                    int numCustomerForEdit = scanner.nextInt();
-//                    scanner.nextLine();
-//                    productsCustomer[numCustomerForEdit-1] = shopManager.changeCustomer(customer[numCustomerForEdit-1]);
-                    break;   
+                    System.out.println("Список покупателей: ");
+                    shopManager.printListCustomers(customers);
+                    System.out.print("Выберите покупателя для редактирования: ");
+                    int numCustomerForEdit = scanner.nextInt();
+                    System.out.print("Введите новое количество денег: ");
+                    int num2 = scanner.nextInt();
+//                    int newcash = customer[numCustomerForEdit-1].getCash() + num2;
+                    customers[numCustomerForEdit-1].setCash(customers[numCustomerForEdit-1].getCash() + num2);
+                    break;      
                 default:
                     System.out.println("Выберите задачу из списка");
             }
@@ -99,11 +124,10 @@ public class App {
     }
     
     private void testAddProduct() {
-        this.products = new Product[0];
         Product product = new Product();
         product.setTitle("Milk");
-        product.setPrice("0.99");
-        product.setCountProductInShop("2190");
+        product.setPrice(2);
+        product.setCountProductInShop(2190);
         product.setFabricator("Tere");
         
         this.products = Arrays.copyOf(this.products, this.products.length+1);
@@ -111,13 +135,12 @@ public class App {
     }
     
     private void testAddCustomer() {
-        this.productsCustomer = new Customer[0];
         Customer customer = new Customer();
         customer.setName("Nikita Ivtsenkov");
-        customer.setCash("200");
+        customer.setCash(200);
         customer.setTelephone("+56884831");
 
-        this.productsCustomer = Arrays.copyOf(this.productsCustomer, this.productsCustomer.length+1);
-        this.productsCustomer[this.productsCustomer.length-1] = customer;
+        this.customers = Arrays.copyOf(this.customers, this.customers.length+1);
+        this.customers[this.customers.length-1] = customer;
     }
 }
